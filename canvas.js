@@ -5,17 +5,28 @@ canvas.height = window.innerHeight;
 
 const ctx = canvas.getContext('2d');
 
-ctx.fillRect(100,100,100,100);
-ctx.clearRect(120,120,60,60);
-ctx.strokeRect(130,130,40,40);
-
-ctx.beginPath();
-ctx.moveTo(40,300);
-ctx.lineTo(300,300);
-ctx.lineTo(400,2)
-ctx.fillStyle = "#eee";
-ctx.fill();
-
-
+drawTriangle(20,50);
+drawSmile()
+function drawTriangle(x,y){
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x+25,y+25);
+    ctx.lineTo(x+25,y -25);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fillStyle = '#f2f'
+    ctx.fill()
+}
+function drawSmile(){
+    ctx.beginPath();
+    ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+    ctx.moveTo(110, 75);
+    ctx.arc(75, 75, 35, 0, Math.PI, false); // Mouth (clockwise)
+    ctx.moveTo(65, 65);
+    ctx.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
+    ctx.moveTo(95, 65);
+    ctx.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
+    ctx.stroke();
+}
 
 console.log(canvas);
